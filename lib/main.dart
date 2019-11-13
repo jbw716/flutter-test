@@ -50,7 +50,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   int _currentIndex = 0;
 
   final List<Widget> _children = [
@@ -64,14 +63,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _children[_currentIndex],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _children,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(icon: Icon(Icons.library_books), title: Text('News')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.library_books), title: Text('News')),
           BottomNavigationBarItem(icon: Icon(Icons.note), title: Text('Notes')),
-          BottomNavigationBarItem(icon: Icon(Icons.video_library), title: Text('Videos')),
-          BottomNavigationBarItem(icon: Icon(Icons.info_outline), title: Text('About')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.video_library), title: Text('Videos')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.info_outline), title: Text('About')),
         ],
         currentIndex: _currentIndex,
         onTap: (int index) => setState(() => _currentIndex = index),

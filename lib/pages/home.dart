@@ -11,6 +11,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  int presses = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +26,21 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Text(
               'You on the home page bruhh.',
-            )
+            ),
+            Text(
+              'You pressed the button this many times:',
+            ),
+            Text(
+              presses.toString(),
+            ),
           ],
         ),
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => setState(() => presses++),
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ), 
     );
   }
 }
